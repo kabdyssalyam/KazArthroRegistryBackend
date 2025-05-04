@@ -28,6 +28,9 @@ public class User {
     @Enumerated(EnumType.STRING) // Store enum as a string in the database
     private UserType type;
 
+    @Column(nullable = false)
+    private boolean active = true; // Default value is 'true'
+
     // Default constructor (JPA requirement)
     public User() {
     }
@@ -39,6 +42,7 @@ public class User {
         this.firstname = firstname;
         this.lastname = lastname;
         this.type = type;
+        this.active = active;
     }
 
     // Getters and setters
@@ -88,6 +92,14 @@ public class User {
 
     public void setType(UserType type) {
         this.type = type;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     @Override

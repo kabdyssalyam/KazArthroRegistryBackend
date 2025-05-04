@@ -6,4 +6,5 @@ public class UserDto {
     public String firstname;
     public String lastname;
     public String type;
+    public boolean isActive;
 }

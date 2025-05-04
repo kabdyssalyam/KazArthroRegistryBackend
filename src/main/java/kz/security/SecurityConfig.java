@@ -16,7 +16,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class) // Add the filter before UsernamePasswordAuthenticationFilter
                 .authorizeRequests()
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/auth/register", "/auth/login").permitAll()
-                .anyRequest().authenticated(); // Require authentication for all other requests
+                .anyRequest().authenticated();
     }
 }

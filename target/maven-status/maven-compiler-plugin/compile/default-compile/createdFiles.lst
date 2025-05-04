@@ -1,0 +1,9 @@
+kz\Application.class
+kz\controller\AuthController.class
+kz\service\UserService.class
+kz\repository\UserRepository.class
+kz\user\User.class
+kz\security\SecurityConfig.class
+kz\dto\UserDto.class
+kz\config\AppConfig.class
+kz\types\UserType.class

@@ -1,0 +1,1 @@
+jdbc:aws-wrapper:mysql://localhost:3306/kardb?allowPublicKeyRetrieval=true&useSSL=false

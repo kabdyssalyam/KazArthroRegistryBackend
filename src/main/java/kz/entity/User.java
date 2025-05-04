@@ -1,4 +1,4 @@
-package kz.user; // Make sure to use your correct package name
+package kz.entity; // Make sure to use your correct package name
 
 import kz.types.UserType;
 
@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id

@@ -1,4 +1,6 @@
 package kz.types;
 
-public class UserType {
+public enum UserType {
+    ADMIN,
+    DOCTOR;
 }

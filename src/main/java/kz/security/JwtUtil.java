@@ -4,6 +4,8 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.JwtParser;
 
+import java.util.Date;
+
 public class JwtUtil {
 
     private static final String SECRET_KEY = "supersecureyourSecretKeyHere12345andevenmoresecure!@%";  // Use a stronger key in production
@@ -16,8 +18,13 @@ public class JwtUtil {
     }
 
     public static String generateToken(String username) {
+        Date now = new Date();
+        Date expiry = new Date(now.getTime() + 1000 * 60 * 60 * 3); // 1 hour
+
         return Jwts.builder()
                 .setSubject(username)
+                .setIssuedAt(now)
+                .setExpiration(expiry)
                 .signWith(io.jsonwebtoken.SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
     }

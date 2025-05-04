@@ -1,31 +1,22 @@
-package kz.security;  // Use your correct package
+package kz.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.firewall.DefaultHttpFirewall;
-import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    // Custom firewall to allow more relaxed URL handling (e.g., allow "%0A" characters)
-    @Bean
-    public HttpFirewall allowUrlEncodedSlashHttpFirewall() {
-        return new DefaultHttpFirewall(); // Allow encoded characters like '%0A'
-    }
-
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable() // Disable CSRF protection for stateless APIs
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class) // Add the filter before UsernamePasswordAuthenticationFilter
                 .authorizeRequests()
-                .antMatchers("/auth/register").permitAll();
-
-        return http.build(); // Important to return the http.build() here!
+                .antMatchers("/auth/register", "/auth/login").permitAll()
+                .anyRequest().authenticated(); // Require authentication for all other requests
     }
 }

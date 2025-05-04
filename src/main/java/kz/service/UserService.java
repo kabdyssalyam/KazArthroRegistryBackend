@@ -35,11 +35,8 @@ public class UserService {
         return "User registered successfully";
     }
 
-    public String login(String login, String password) {
+    public boolean login(String login, String password) {
         Optional<User> userOpt = userRepository.findByLogin(login);
-        if (userOpt.isPresent() && passwordEncoder.matches(password, userOpt.get().getPassword())) {
-            return "Login successful";
-        }
-        return "Invalid credentials";
+        return userOpt.isPresent() && passwordEncoder.matches(password, userOpt.get().getPassword());
     }
 }

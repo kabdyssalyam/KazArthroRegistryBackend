@@ -1,9 +1,15 @@
 kz\Application.class
 kz\controller\AuthController.class
 kz\service\UserService.class
-kz\repository\UserRepository.class
-kz\user\User.class
+kz\entity\User.class
+kz\security\CustomUserDetails.class
+kz\security\JwtUtil.class
+kz\security\JwtAuthenticationFilter.class
 kz\security\SecurityConfig.class
 kz\dto\UserDto.class
+kz\controller\AdminController.class
+kz\repository\UserRepository.class
+kz\security\CustomUserDetailsService.class
 kz\config\AppConfig.class
+kz\security\JwtUtil$ClaimsResolver.class
 kz\types\UserType.class

@@ -1,9 +1,8 @@
 package kz.entity; // Make sure to use your correct package name
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import kz.types.UserType;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")

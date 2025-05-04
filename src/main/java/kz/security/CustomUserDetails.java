@@ -18,7 +18,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Converts enum ADMIN to authority ROLE_ADMIN
+        
         return Collections.singletonList(
                 new SimpleGrantedAuthority("ROLE_" + user.getType().name())
         );

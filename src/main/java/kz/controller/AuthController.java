@@ -15,11 +15,6 @@ public class AuthController {
         this.userService = userService;
     }
 
-    @PostMapping("/register")
-    public String register(@RequestBody UserDto dto) {
-        return userService.register(dto);
-    }
-
     @PostMapping("/login")
     public String login(@RequestParam String login, @RequestParam String password) {
         // Check user credentials (authentication) via UserService

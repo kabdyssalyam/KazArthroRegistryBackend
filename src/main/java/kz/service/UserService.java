@@ -20,24 +20,6 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public String register(UserDto dto) {
-        throw new RuntimeException("Registration is disabled");
-        /*
-        if (userRepository.findByLogin(dto.login).isPresent()) {
-            return "User already exists";
-        }
-
-        User user = new User();
-        user.setLogin(dto.login);
-        user.setPassword(passwordEncoder.encode(dto.password));
-        user.setFirstname(dto.firstname);
-        user.setLastname(dto.lastname);
-        user.setType(UserType.valueOf(dto.type.toUpperCase()));
-
-        userRepository.save(user);
-        return "User registered successfully";*/
-    }
-
     public User createUser(UserDto userDto) {
         User user = new User();
         user.setLogin(userDto.login);
